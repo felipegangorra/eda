@@ -21,5 +21,4 @@ class BuscaLinearRecursiva {
 
         return contido(sequencia, i + 1, numero);
     }
-
 }
