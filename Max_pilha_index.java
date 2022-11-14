@@ -44,7 +44,7 @@ class Max_pilha_index {
 
         int[] elementos = arrayInteiros(sc);
         int capacidade = tamanho(elementos);
-        Inverte_pilha_index pilha = new Inverte_pilha_index(capacidade);
+        Max_pilha_index pilha = new Max_pilha_index(capacidade);
 
         //adicionando elementos na pilha
         for (int i = 0; i < capacidade; i++) {
@@ -60,7 +60,7 @@ class Max_pilha_index {
         sc.close();
     }
 
-    private static int maiorElemento(Inverte_pilha_index pilha, int index) {
+    private static int maiorElemento(Max_pilha_index pilha, int index) {
         int[] aux = new int[index+1];
 
         //separando elementos até o index
