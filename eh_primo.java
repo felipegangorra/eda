@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class eh_primo {
+class Eh_primo {
     
     public static void main(String[] args){
 
