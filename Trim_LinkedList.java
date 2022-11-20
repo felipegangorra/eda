@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /* ---------- MAIN ---------- */
 
-public class Trim_LinkedList {
+class Trim_LinkedList {
     public static void main(String[] args) {
         Scanner sc =  new Scanner(System.in);
 
@@ -17,15 +17,20 @@ public class Trim_LinkedList {
 
         removeExtremos(lista, extremos);
 
-        System.out.println(lista);
+        if(lista.isEmpty()) {
+            System.out.println("vazia");
+        } else {
+            System.out.println(lista.toString());
+        }
 
         sc.close();
     }
 
     private static void removeExtremos(LinkedList lista, int extremos) {
-        for (int i = 0; i < extremos; i++) {
+        while(extremos > 0) {
             lista.removeFirst();
             lista.removeLast();
+            extremos--;
         }
     }
 
@@ -45,8 +50,8 @@ public class Trim_LinkedList {
 
 class LinkedList {
 
-    private Node head;
-    private Node tail;
+    private NodeN head;
+    private NodeN tail;
     private int size;
 
     public LinkedList() {
@@ -61,7 +66,7 @@ class LinkedList {
 
     //adicionando em ultimo
     public void addLast(int value) {
-        Node newNode = new Node(value);
+        NodeN newNode = new NodeN(value);
 
         if(isEmpty()) {     //se for o primeiro
             this.head = newNode;
@@ -87,11 +92,11 @@ class LinkedList {
             this.head = null;
             this.tail = null;
         } else {
+            this.head.next.prev = null;
             this.head = this.head.next;
-            this.head.prev = null;
         }
 
-        size--;
+        this.size--;
         return value;
     }
 
@@ -103,7 +108,7 @@ class LinkedList {
 
         int value = this.tail.value;    //fim
 
-        if(this.tail.next == null) {
+        if(this.head.next == null) {
             this.tail = null;
             this.head = null;
         } else {
@@ -111,13 +116,23 @@ class LinkedList {
             this.tail.next = null;
         }
 
-        size--;
+        this.size--;
         return value;
     }
 
     //representação
+    @Override
     public String toString() {
-        return null;
+        final StringBuffer sb = new StringBuffer();
+        if (size == 0) {
+            sb.append("vazia");
+        }
+        NodeN aux = this.head;
+        while (aux != null) {
+            sb.append(aux.value).append(" ");
+            aux = aux.next;
+        }
+        return sb.toString().trim();
     }
     
     
@@ -125,12 +140,12 @@ class LinkedList {
 
 /* ---------- CLASSE DO NODE ---------- */
 
-class Node {
+class NodeN {
     int value;
-    Node next;
-    Node prev;
+    NodeN next;
+    NodeN prev;
 
-    public Node(int value) {
+    public NodeN(int value) {
         this.value = value;
         this.next = null;
         this.prev = null;
