@@ -248,8 +248,8 @@ public class BST_Base {
 
     private void posOrdem(Node node) {  //esquerda e direita, depois printa
         if(node != null) {
-            emOrdem(node.left);
-            emOrdem(node.right);
+            posOrdem(node.left);
+            posOrdem(node.right);
             System.out.println(node.value);
         }
     }
